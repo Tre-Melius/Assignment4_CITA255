@@ -4,7 +4,7 @@
              x:Class="QuestLog.MainPage"
              Title="Quest Log">
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto, Auto"
+    <Grid RowDefinitions="Auto,Auto,*,Auto, Auto, Auto, Auto, Auto"
           ColumnDefinitions="*, Auto"
           Padding="24"
           RowSpacing="14">
@@ -35,24 +35,48 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <!-- {Binding .} means "the whole item" - here, the string itself. -->
-                        <Label Text="{Binding Title}" FontSize="16" Padding="12,10" />
+                        <Grid ColumnDefinitions="*, Auto" Padding="12,10">
+                            <VerticalStackLayout Grid.Column="0">
+                            <!-- {Binding .} means "the whole item" - here, the string itself. -->
+                                <Label Text="{Binding Title}" 
+                                       FontSize="16" 
+                                       Padding="12,10" />
+                                <Label Text="{Binding Giver}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="{Binding Reward, StringFormat='{0} xp'}" 
+                                    FontSize="14" 
+                                    TextColor="Gold" />
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
                 <CollectionView.EmptyView>
                     <Label Text="No quests yet."
-                           FontSize="16" TextColor="Gray"
+                           FontSize="16" 
+                           TextColor="Gray"
                            HorizontalOptions="Center" VerticalOptions="Center" />
                 </CollectionView.EmptyView>
 
             </CollectionView>
         </Border>
+        
+        <Entry Grid.Row="3"
+               x:Name="NewQuestEntry"
+               Placeholder="Enter a new quest" />
+        <Entry Grid.Row="4"
+               x:Name="NewQuestGiverEntry"
+               Placeholder="Enter the quest giver" />
+        <Entry Grid.Row="5"
+               Keyboard="Numeric"
+               x:Name="QuestRewardEntry"
+               Placeholder="Enter the quest reward" />
 
-        <Button Grid.Row="3"
+        <Button Grid.Row="6"
                 Text="Accept a quest"
                 Clicked="OnAddClicked" />
-        <Button Grid.Row="4"
+        <Button Grid.Row="7"
                 Text="Turn in quest"
                 Clicked="OnTurnInQuestClicked" />
 

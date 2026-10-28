@@ -25,14 +25,6 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Quest.cs",
@@ -42,7 +34,17 @@
               "RelativeToolTip": "QuestLog\\Quest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-27T21:10:14.424Z"
+              "WhenOpened": "2026-10-27T21:10:14.424Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Document",
@@ -52,9 +54,10 @@
               "RelativeDocumentMoniker": "QuestLog\\MainPage.xaml",
               "ToolTip": "F:\\QuestLog\\Assignment4_CITA255\\QuestLog\\QuestLog\\MainPage.xaml",
               "RelativeToolTip": "QuestLog\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-10-22T07:12:09.975Z"
+              "WhenOpened": "2026-10-22T07:12:09.975Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -64,7 +67,7 @@
               "RelativeDocumentMoniker": "QuestLog\\MainPage.xaml.cs",
               "ToolTip": "F:\\QuestLog\\Assignment4_CITA255\\QuestLog\\QuestLog\\MainPage.xaml.cs",
               "RelativeToolTip": "QuestLog\\MainPage.xaml.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAmwEkAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAiwIMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-22T07:12:07.518Z",
               "EditorCaption": ""

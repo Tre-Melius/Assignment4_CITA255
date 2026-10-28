@@ -13,6 +13,7 @@ namespace QuestLog
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("OldeEnglish.ttf", "OldeEnglish");
                 });
 
 #if DEBUG

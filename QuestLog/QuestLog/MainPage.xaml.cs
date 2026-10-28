@@ -10,10 +10,13 @@
 namespace QuestLog;
 
 using System.Collections.ObjectModel;
+using System.Text.Json;
 public partial class MainPage : ContentPage
 {
     public ObservableCollection<Quest> Quests { get; }
         = new ObservableCollection<Quest>();
+
+    string path = Path.Combine(FileSystem.AppDataDirectory, "quests.json");
     // -------------------------------------------------------------------------
     // TODO 2
     //
@@ -50,9 +53,9 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        LoadQuests();
         BindingContext = this;
-        Quests.Add(new Quest { Title = "Speak to the innkeeper", Giver = "Innkeeper", Reward = 0 });
-        Quests.Add(new Quest { Title = "Buy a lantern", Giver = "Shopkeeper", Reward = 0 });
+        
 
         CountLabel.Text = $"{Quests.Count} quests";
 
@@ -70,8 +73,19 @@ public partial class MainPage : ContentPage
 
     private void OnAddClicked(object sender, EventArgs e)
     {
-        Quest q = new Quest { Title = "Clear the cellar rats", Giver = "TavernKeep", Reward = 50 };
-        Quests.Add(q);
+        int QuestReward;
+        if(int.TryParse(QuestRewardEntry.Text, out QuestReward))
+        {
+            Quest q = new Quest { Title = NewQuestEntry.Text, Giver = NewQuestGiverEntry.Text, Reward = QuestReward };
+            Quests.Add(q);
+            SaveQuests();
+        }
+
+        else
+        {
+            QuestRewardEntry.Text = string.Empty;
+            QuestRewardEntry.Placeholder = "Please enter a valid value type";
+        }
 
         next++;
         if (next >= pool.Length)
@@ -97,9 +111,33 @@ public partial class MainPage : ContentPage
 
     private void OnTurnInQuestClicked(object sender, EventArgs e)
     {
+        if(Quests.Count == 0)
+            return;
         Quests.Remove(Quests[Quests.Count - 1]);
         CountLabel.Text = $"{Quests.Count} quests";
+        SaveQuests();
     }
+    
+    void SaveQuests()
+    {
+        string json = JsonSerializer.Serialize(Quests);
+        File.WriteAllText(path, json);
+    }
+    void LoadQuests()
+    {
+        if(!File.Exists(path))
+        {
+            Quests.Add(new Quest { Title = "Speak to the innkeeper", Giver = "Innkeeper", Reward = 0 });
+            Quests.Add(new Quest { Title = "Buy a lantern", Giver = "Shopkeeper", Reward = 0 });
+            return;
+        }
+        string json = File.ReadAllText(path);
+        List<Quest> quests = JsonSerializer.Deserialize<List<Quest>>(json);
+
+        foreach (Quest q in quests)
+            Quests.Add(q);
+    }
+
 
     // -------------------------------------------------------------------------
     // This whole method exists only because a plain List cannot announce
