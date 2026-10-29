@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QuestLog"
              x:Class="QuestLog.MainPage"
              Title="Quest Log">
 
@@ -35,20 +36,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="*, Auto" Padding="12,10">
-                            <VerticalStackLayout Grid.Column="0">
-                            <!-- {Binding .} means "the whole item" - here, the string itself. -->
-                                <Label Text="{Binding Title}" 
-                                       FontSize="16" 
-                                       Padding="12,10" />
-                                <Label Text="{Binding Giver}" 
-                                       FontSize="14" 
-                                       TextColor="Gray" />
-                            </VerticalStackLayout>
-                            <Label Grid.Column="1" Text="{Binding Reward, StringFormat='{0} xp'}" 
-                                    FontSize="14" 
-                                    TextColor="Gold" />
-                        </Grid>
+                        <local:QuestCard />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
